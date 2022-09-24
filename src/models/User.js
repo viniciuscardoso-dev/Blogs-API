@@ -5,14 +5,13 @@ module.exports = (sequelize, DataTypes) => {
       password: DataTypes.STRING,
       display_name: {
         type: DataTypes.STRING,
-        field: 'displayName',
       }, 
       image: DataTypes.STRING,
     },
     {
       timestamps: false,
       tableName: 'users',
-      underscored: true,
+      underscored: false,
     });
   
     return User;
