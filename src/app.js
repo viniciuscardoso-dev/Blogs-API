@@ -1,7 +1,8 @@
 const express = require('express');
 // const routesUser = require('./routes/user.route');
-const routeLogin = require('./routes/login.route');
+require('express-async-errors');
 const midError = require('./middlewares/error'); 
+const routeLogin = require('./routes/login.route');
 
 // implementacao do token
 

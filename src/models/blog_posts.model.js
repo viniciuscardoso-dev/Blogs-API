@@ -19,5 +19,5 @@ module.exports = (sequelize, DataTypes) => {
         });
     };
   
-    return Rotina;
+    return BlogPost;
   };
