@@ -1,8 +1,7 @@
 const express = require('express');
 // const routesUser = require('./routes/user.route');
 const routeLogin = require('./routes/login.route');
-
-// importar middleware de erro
+const midError = require('./middlewares/error'); 
 
 // implementacao do token
 
@@ -15,6 +14,6 @@ app.use(express.json());
 app.use('/login', routeLogin);
 // app.use('/user', routesUser);
 
-// app.use middleware de erro
+app.use(midError);
 
 module.exports = app;
