@@ -12,17 +12,17 @@ const generateToken = (payload) =>
 
 const authTokenValidation = async (token) => {
     if (!token) {
-        const e = new Error('missing auth token');
+        const e = new Error('Token not found');
         e.status = 401;
-        return e;
+        throw e;
     }
     try {
         const instrospection = await jwt.verify(token, TOKEN_SECRET);
         return instrospection;
     } catch (e) {
-        const err = new Error('jwt malformado');
+        const err = new Error('Expired or invalid token');
         err.status = 401;
-        return err;
+        throw err;
     }  
 };
 

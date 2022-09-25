@@ -14,6 +14,17 @@ const createUser = async ({ displayName, email, password, image }) => {
   return result;
 };
 
+const getUsers = async () => {
+  const user = await User.findAll({ attributes: { exclude: ['password'] } });
+  if (!user) {
+    const e = new Error('User already registered');
+    e.status = 401;
+    throw e;
+  }
+  return user;
+};
+
 module.exports = {
   createUser,
+  getUsers,
 };
