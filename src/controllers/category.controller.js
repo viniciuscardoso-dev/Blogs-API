@@ -5,10 +5,10 @@ const createCategory = async (req, res) => {
     return res.status(201).json(newCategory);
   };
 
-// const getCategorys = async (_req, res) => {
-//   const Categorys = await CategoryService.getCategorys();
-//   return res.status(200).json(Categorys);
-// };
+const getCategorys = async (_req, res) => {
+  const Categorys = await CategoryService.getCategorys();
+  return res.status(200).json(Categorys);
+};
 
 // const getCategory = async (req, res) => {
 //   const Category = await CategoryService.getCategory(req.params.id);
@@ -18,5 +18,5 @@ const createCategory = async (req, res) => {
 module.exports = {
     createCategory,
     // getCategory,
-    // getCategorys,
+    getCategorys,
 };
