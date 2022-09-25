@@ -29,7 +29,7 @@ const validatePassword = (password) => {
     return erro;
 };
 
-const newUser = async (req, _res, next) => {
+const newUser = async (req, res, next) => {
     const { email, displayName, password } = req.body;
     const users = await User.findOne({ where: { email } });
     if (users) {
