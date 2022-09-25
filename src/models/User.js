@@ -3,7 +3,7 @@ module.exports = (sequelize, DataTypes) => {
       id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      display_name: {
+      displayName: {
         type: DataTypes.STRING,
       }, 
       image: DataTypes.STRING,
@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       timestamps: false,
       tableName: 'users',
-      underscored: false,
+      underscored: true,
     });
   
     return User;
