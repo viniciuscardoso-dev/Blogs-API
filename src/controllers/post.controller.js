@@ -9,18 +9,18 @@ const createPost = async (req, res, next) => {
     }
   };
 
-// const getposts = async (_req, res) => {
-//   const posts = await postService.getposts();
-//   return res.status(200).json(posts);
-// };
+const getPosts = async (_req, res) => {
+  const posts = await postService.getPosts();
+  return res.status(200).json(posts);
+};
 
-// const getpost = async (req, res) => {
-//   const post = await postService.getpost(req.params.id);
-//   return res.status(200).json(post);
-// };
+const getPost = async (req, res) => {
+  const post = await postService.getPost(req.params);
+  return res.status(200).json(post);
+};
 
 module.exports = {
     createPost,
-    // getpost,
-    // getposts,
+    getPost,
+    getPosts,
 };

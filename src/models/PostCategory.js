@@ -1,7 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
   const PostCategory = sequelize.define('PostCategory', {
-    postId: DataTypes.INTEGER,
-    categoryId: DataTypes.INTEGER,
+    postId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'BlogPosts',
+        key: 'id',
+      }
+    },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Categories',
+        key: 'id',
+      }
+    },
   },
   {
     timestamps: false,
@@ -10,15 +22,17 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   PostCategory.associate = (models) => {
-    models.BlogPost.belongsToMany(models.Category, {
-      through: 'posts_categories',
-      foreignKey: 'post_id',
-      otherKey: 'category_id'
+    models.BlogPost.belongsToMany(models.Category, { 
+      through: PostCategory,
+      as: 'categories',
+      foreignKey: 'postId',
+      otherKey: 'categoryId'
     });
     models.Category.belongsToMany(models.BlogPost, {
-      through: 'posts_categories',
-      foreignKey: 'category_id',
-      otherKey: 'post_id'
+      through: PostCategory,
+      as: 'blogPosts',
+      foreignKey: 'categoryId',
+      otherKey: 'postId'
     });
   };
   PostCategory.removeAttribute('id');

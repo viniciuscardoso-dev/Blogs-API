@@ -7,9 +7,7 @@ const authMiddleware = require('../middlewares/auth.middleware');
 const routers = express.Router();
 
 routers.post('/', authMiddleware, postMiddleware.newPost, postController.createPost);
-// routers.post('/', userMiddleware.newUser, userController.createUser);
-
-// routers.get('/', authMiddleware, userController.getUsers);
-// routers.get('/:id', authMiddleware, userController.getUser);
+routers.get('/', authMiddleware, postController.getPosts);
+routers.get('/:id', authMiddleware, postController.getPost);
 
 module.exports = routers;
