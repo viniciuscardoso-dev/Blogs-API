@@ -3,11 +3,11 @@ module.exports = (sequelize, DataTypes) => {
     postId: DataTypes.INTEGER,
     categoryId: DataTypes.INTEGER,
   },
-    {
-      timestamps: false,
-      tableName: 'posts_categories',
-      underscored: true,
-    });
+  {
+    timestamps: false,
+    tableName: 'posts_categories',
+    underscored: true,
+  });
 
   PostCategory.associate = (models) => {
     models.BlogPost.belongsToMany(models.Category, {
@@ -21,6 +21,6 @@ module.exports = (sequelize, DataTypes) => {
       otherKey: 'post_id'
     });
   };
-
+  PostCategory.removeAttribute('id');
   return PostCategory;
 };
