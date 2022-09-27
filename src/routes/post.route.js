@@ -11,5 +11,6 @@ routers.post('/', postMiddleware.newPost, postController.createPost);
 routers.get('/', postController.getPosts);
 routers.get('/:id', postController.getPost);
 routers.put('/:id', postController.alterPost);
+routers.delete('/:id', postController.deletePost);
 
 module.exports = routers;

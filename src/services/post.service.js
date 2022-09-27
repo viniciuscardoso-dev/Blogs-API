@@ -55,9 +55,22 @@ const alterPost = async (id, { title, content }) => {
   return postAltered;
 };
 
+const deletePost = async (id) => {
+  const post = await getPost({ id });
+  if (!post) {
+    const e = {
+      status: 404,
+      message: 'Post does not exist',
+    };
+    throw e;
+  }
+  await BlogPost.destroy({ where: { id } });
+};
+
 module.exports = {
   createPost,
   getPost,
   getPosts,
   alterPost,
+  deletePost,
 };

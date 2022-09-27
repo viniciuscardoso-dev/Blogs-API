@@ -6,7 +6,17 @@ const createPost = async (req, res) => {
 };
 
 const deletePost = async (req, res) => {
-
+  const { userId } = req.body;
+  const post = await postService.getPost(req.params);
+  if (post.userId !== userId) {
+    const e = {
+      status: 401,
+      message: 'Unauthorized user',
+    };
+    throw e;
+  }
+  await postService.deletePost(req.params.id);
+  return res.status(204).end();
 };
 
 const getPosts = async (_req, res) => {
