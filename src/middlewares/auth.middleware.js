@@ -1,6 +1,6 @@
 const { authTokenValidation } = require('../utils/JWT');
 
-const authMiddleware = async (req, res, next) => {
+const authMiddleware = async (req, _res, next) => {
     const token = req.headers.authorization;
     const payload = await authTokenValidation(token);
     if (!payload) {
