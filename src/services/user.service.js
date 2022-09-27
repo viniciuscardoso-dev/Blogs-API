@@ -14,6 +14,15 @@ const createUser = async ({ displayName, email, password, image }) => {
   return result;
 };
 
+const userExist = async (email) => {
+  const users = await User.findOne({ where: { email } });
+  if (users) {
+    const e = new Error('User already registered');
+    e.status = 409;
+    throw e;
+  }
+};
+
 const getUser = async (id) => {
   const user = await User.findOne({ 
     where: { id },
@@ -41,4 +50,5 @@ module.exports = {
   createUser,
   getUser,
   getUsers,
+  userExist,
 };

@@ -1,4 +1,4 @@
-const { User } = require('../../models');
+const { userExist } = require('../../services/user.service');
 
 const validateName = (name) => {
     let erro = false;
@@ -32,16 +32,9 @@ const validatePassword = (password) => {
     return erro;
 };
 
-const newUser = async (req, res, next) => {
+const newUser = async (req, _res, next) => {
     const { email, displayName, password } = req.body;
-    const users = await User.findOne({ where: { email } });
-    // chamar o camada de service pra ela sim chamar a camada de model
-    if (users) {
-        const e = new Error('User already registered');
-        e.status = 409;
-        return next(e);
-    }
-    // funcao userExist na service 
+    await userExist(email); 
     const requests = [];
     requests.push(validateName(displayName));
     requests.push(validatePassword(password));
@@ -49,7 +42,7 @@ const newUser = async (req, res, next) => {
     const resp = await Promise.all(requests);
     const erro = resp.find((v) => v); 
     if (resp.find((v) => v)) return next(erro);
-    next();
+    return next();
 };
 
 module.exports = {
