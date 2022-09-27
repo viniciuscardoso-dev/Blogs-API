@@ -8,6 +8,7 @@ const createPost = async (req, res, next) => {
     } catch (error) {
       next(error);
     }
+    // verificar funcionamento deste trycatch
   };
 
 const getPosts = async (_req, res) => {
@@ -28,6 +29,7 @@ const alterPost = async (req, res) => {
     e.message = 'Unauthorized user';
     throw e;
   }
+  // este if se trata de uma regra de negócio portanto deveria estar na camada de serviço
   const postAltered = await postService.alterPost(req.params.id, req.body);
   return res.status(200).json(postAltered);
 };

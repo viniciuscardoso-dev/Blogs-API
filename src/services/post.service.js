@@ -55,6 +55,7 @@ const alterPost = async (id, { title, content }) => {
     };
     throw e;
   }
+  // esse if tem que estar na camada de controle
   await BlogPost.update({
     title, content,
   }, { where: { id } });

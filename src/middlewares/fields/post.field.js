@@ -5,7 +5,7 @@ const newPost = async (req, _res, next) => {
         e.status = 400;
         throw e;
     }
-    next();
+    return next();
 };
 
 module.exports = {
