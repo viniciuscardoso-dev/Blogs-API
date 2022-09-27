@@ -6,9 +6,10 @@ const authMiddleware = require('../middlewares/auth.middleware');
 
 const routers = express.Router();
 
-routers.post('/', authMiddleware, postMiddleware.newPost, postController.createPost);
-routers.get('/', authMiddleware, postController.getPosts);
-routers.get('/:id', authMiddleware, postController.getPost);
-routers.put('/:id', authMiddleware, postController.alterPost);
+routers.use(authMiddleware);
+routers.post('/', postMiddleware.newPost, postController.createPost);
+routers.get('/', postController.getPosts);
+routers.get('/:id', postController.getPost);
+routers.put('/:id', postController.alterPost);
 
 module.exports = routers;
