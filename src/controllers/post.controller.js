@@ -50,10 +50,17 @@ const alterPost = async (req, res) => {
   return res.status(200).json(postAltered);
 };
 
+const getByQuery = async (req, res) => {
+  const { q } = req.query;
+  const posts = await postService.getByQuery(q);
+  return res.status(200).json(posts);
+};
+
 module.exports = {
   createPost,
   getPost,
   getPosts,
   alterPost,
   deletePost,
+  getByQuery,
 };
