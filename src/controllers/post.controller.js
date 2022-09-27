@@ -1,13 +1,12 @@
 const postService = require('../services/post.service');
 
-const createPost = async (req, res, next) => {
-  try {
+const createPost = async (req, res) => {
     const newPost = await postService.createPost(req.body);
     return res.status(201).json(newPost);
-  } catch (error) {
-    next(error);
-  }
-  // verificar funcionamento deste trycatch
+};
+
+const deletePost = async (req, res) => {
+
 };
 
 const getPosts = async (_req, res) => {
@@ -46,4 +45,5 @@ module.exports = {
   getPost,
   getPosts,
   alterPost,
+  deletePost,
 };
