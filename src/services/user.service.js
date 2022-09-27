@@ -1,17 +1,8 @@
-const { User, sequelize } = require('../models');
+const { User } = require('../models');
 
 const createUser = async ({ displayName, email, password, image }) => {
-  const result = await sequelize.transaction(async (t) => {
-    const newUser = await User.create(
-      { displayName, email, password, image },
-      {
-        transaction: t,
-        underscored: true,
-      },
-    );
-    return newUser;
-  });
-  return result;
+  const newUser = await User.create({ displayName, email, password, image });
+  return newUser;
 };
 
 const userExist = async (email) => {
@@ -24,7 +15,7 @@ const userExist = async (email) => {
 };
 
 const getUser = async (id) => {
-  const user = await User.findOne({ 
+  const user = await User.findOne({
     where: { id },
     attributes: { exclude: ['password'] },
   });
