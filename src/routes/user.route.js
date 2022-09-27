@@ -11,5 +11,6 @@ routers.use(authMiddleware);
 
 routers.get('/', userController.getUsers);
 routers.get('/:id', userController.getUser);
+routers.delete('/me', userController.deleteMe);
 
 module.exports = routers;
