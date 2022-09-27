@@ -5,10 +5,10 @@ const createPost = async ({ userId, title, content, categoryIds }) => {
   try {
     const newPost = await BlogPost.create({ userId, title, content },
       { transaction, underscored: true });
-      await Promise.all(
-        categoryIds.map((categoryId) => PostCategory.create({ postId: newPost.id, categoryId },
-           { transaction })),
-  );
+    await Promise.all(
+      categoryIds.map((categoryId) => PostCategory.create({ postId: newPost.id, categoryId },
+        { transaction })),
+    );
     await transaction.commit();
     return newPost;
   } catch (e) {
@@ -44,12 +44,27 @@ const getPost = async ({ id }) => {
     };
     throw e;
   }
-  console.log(post);
   return post;
+};
+
+const alterPost = async (id, { title, content }) => {
+  if (!title || !content) {
+    const e = {
+      status: 400,
+      message: 'Some required fields are missing',
+    };
+    throw e;
+  }
+  await BlogPost.update({
+    title, content,
+  }, { where: { id } });
+  const postAltered = await getPost({ id });
+  return postAltered;
 };
 
 module.exports = {
   createPost,
   getPost,
   getPosts,
+  alterPost,
 };

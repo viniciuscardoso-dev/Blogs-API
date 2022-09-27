@@ -1,3 +1,4 @@
+const e = require('express');
 const postService = require('../services/post.service');
 
 const createPost = async (req, res, next) => {
@@ -19,8 +20,21 @@ const getPost = async (req, res) => {
   return res.status(200).json(post);
 };
 
+const alterPost = async (req, res) => {
+  const { userId } = req.body;
+  const post = await postService.getPost({ id: userId });
+  if (post.userId !== userId) {
+    e.status = 401;
+    e.message = 'Unauthorized user';
+    throw e;
+  }
+  const postAltered = await postService.alterPost(req.params.id, req.body);
+  return res.status(200).json(postAltered);
+};
+
 module.exports = {
     createPost,
     getPost,
     getPosts,
+    alterPost,
 };
