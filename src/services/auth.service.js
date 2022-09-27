@@ -1,6 +1,4 @@
 const { User } = require('../models');
-// pose ser que de erro na importacao
-
 const { generateToken } = require('../utils/JWT');
 
 const authentication = async ({ email, password }) => {
