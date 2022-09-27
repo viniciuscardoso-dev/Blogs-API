@@ -1,17 +1,8 @@
-const { Category, sequelize } = require('../models');
+const { Category } = require('../models');
 
 const createCategory = async ({ name }) => {
-  const result = await sequelize.transaction(async (t) => {
-    const newCategory = await Category.create(
-      { name },
-      {
-        transaction: t,
-        underscored: true,
-      },
-    );
+    const newCategory = await Category.create({ name });
     return newCategory;
-  });
-  return result;
 };
 
 const getCategorys = async () => {
