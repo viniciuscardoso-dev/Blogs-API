@@ -48,14 +48,6 @@ const getPost = async ({ id }) => {
 };
 
 const alterPost = async (id, { title, content }) => {
-  if (!title || !content) {
-    const e = {
-      status: 400,
-      message: 'Some required fields are missing',
-    };
-    throw e;
-  }
-  // esse if tem que estar na camada de controle
   await BlogPost.update({
     title, content,
   }, { where: { id } });
