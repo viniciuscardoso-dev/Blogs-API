@@ -1,16 +1,28 @@
-# 🚧 README em construção 🚧
+# :rocket: Projeto Blogs - API (proposto pela Trybe) :rocket:
+## Resumo:
+Desenvolvi a API da aplicação orientado aos requisitos que o projeto estabelecia em seus testes.
 
-<!-- Olá, Tryber!
+<details>
+  <summary><strong>Tecnologias utilizadas</strong></summary>
+  
+  ## Orquestração de containers:
+  
+  - Docker;
+  - Docker-compose;
+  
+  ## Construção API Rest (MSC):
+  
+  - ORM: Sequelize;
+  - Framework: Express;
+  - TDD: Mocha, Chai, Sinon, sequelize-test-helpers;
+  
+  ## Banco de dados: 
+  
+  - Linguagem: Sql;
+  - Mysql;
+</details>
 
-Esse é apenas um arquivo inicial para o README do seu projeto.
+<details>
+  <summary><strong>Como contribuir para o projeto</strong></summary>
 
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+</details>
