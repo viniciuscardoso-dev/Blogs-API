@@ -21,8 +21,3 @@ Desenvolvi a API da aplicação orientado aos requisitos que o projeto estabelec
   - Linguagem: Sql;
   - Mysql;
 </details>
-
-<details>
-  <summary><strong>Como contribuir para o projeto</strong></summary>
-
-</details>
